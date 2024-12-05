@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Tag list</h1>
+  <hr>
+  {% for tag in tag_list %}
+    <div class="card" style="width: 10rem;">
+      <div class="card-body">
+        <a class="nav-link"
+           href="{% url 'note:tag-filter' tag.id %}">
+          {{ tag.name }}
+        </a>
+      </div>
+    </div>
+    <br/>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,35 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+  
+    {% if folder %}
+      <li class="breadcrumb-item">
+        <a class="nav-link" href="{% url 'note:folder-list' %}">Folders</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <i class="bi bi-folder2-open">{{ folder.name }}</i>
+      </li>
+    {% endif %}
+  
+    {% if tag %}
+      <li class="breadcrumb-item">
+        <a class="nav-link" href="{% url 'note:tag-list' %}">Tags</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        #{{ tag.name }}
+      </li>
+    {% endif %}
+  
+    {% if tag and folder %}
+    	<li class="breadcrumb-item">
+        <a class="nav-link" href="{% url 'note:folder-list' %}">Folders</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <i class="bi bi-folder2-open">{{ folder.name }}</i>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        #{{ tag.name }}
+      </li>
+    {% endif %} 
+  
+  </ol>
+</nav>

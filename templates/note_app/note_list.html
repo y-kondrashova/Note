@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% include 'includes/breadcrumb.html' %}
+  <hr/>
+  <div class="d-flex p-2">
+    {% for note in note_list %}
+      <div class="card m-1" style="width: 18rem;">
+        <div class="card-body">
+          <h4 class="card-title">{{ note.title }}</h4>
+          <p class="card-text">{{ note.text }}</p>
+          <br/>
+          {% for tag in note.tags.all %}
+            <a class="nav-link" href="{% url 'note:tag-filter' tag.id %}">
+              #{{ tag.name }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
